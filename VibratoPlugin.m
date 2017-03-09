@@ -1,15 +1,11 @@
-classdef VibratoPlugin < audioPlugin
-    
+classdef VibratoPlugin < audioPlugin  
     properties
         width = 0.0001
         rate = 9
-        waveform = 'Sine'
+        waveform = 'Sin'
         Mix = 0.5
     end
-    
-    properties (Dependent)
-    end
-    
+
     properties (Constant)
         % audioPluginInterface manages the number of input/output channels
         % and uses audioPluginParameter to generate plugin UI parameters.
@@ -17,7 +13,7 @@ classdef VibratoPlugin < audioPlugin
             audioPluginParameter('width','DisplayName','Width','Label','','Mapping',{'lin',0.00001 0.001}),...
             audioPluginParameter('rate','DisplayName','Modulation Rate','Label','Hz','Mapping',{'lin',0.1 14}),...
             audioPluginParameter('waveform',...
-            'DisplayName','Waveform','Mapping',{'enum','Sine','Square', 'Sawtooth','Triangle'}),...
+            'DisplayName','Waveform','Mapping',{'enum','Sin','Sqr', 'Saw','Tri'}),...
             audioPluginParameter('Mix','DisplayName','Dry/Wet','Label','%','Mapping',{'lin',0 1}));
     end
     

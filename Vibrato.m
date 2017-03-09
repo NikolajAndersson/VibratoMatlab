@@ -26,7 +26,7 @@ classdef Vibrato < handle
         end
         function setRate(obj,rate)
             obj.rate = rate;
-            obj.freq = rate / obj.fs;
+            obj.freq = rate;
         end
         function setWidth(obj,width)
             obj.width = width;
@@ -39,25 +39,25 @@ classdef Vibrato < handle
             y = zeros(size(x));
             writeIndex = obj.BufferIndex;
             
-            delta = obj.freq * 2 * pi;
+            delta = (obj.freq * 2 * pi) / obj.fs;
             
             for i = 1:size(x,1)
                 obj.Buffer(writeIndex,:) = x(i,:); % Store buffer
                 
-                osc = sin(obj.phase);
+                osc = 0;
                 
                 switch(obj.waveform)
-                    case 'Sine'
+                    case 'Sin'
                         osc = obj.amplitude*sin(obj.phase);
-                    case 'Square'
+                    case 'Sqr'
                         if obj.phase < pi
                             osc = obj.amplitude;
                         else
                             osc = -obj.amplitude;
                         end
-                    case 'Sawtooth'
+                    case 'Saw'
                         osc = obj.amplitude - (obj.amplitude / pi * obj.phase);
-                    case 'Triangle'
+                    case 'Tri'
                         if obj.phase < pi
                             osc = -obj.amplitude + (2 * obj.amplitude / pi)  * obj.phase;
                         else
@@ -68,23 +68,25 @@ classdef Vibrato < handle
                 obj.phase = obj.phase + delta;
                 
                 if obj.phase > 2 * pi
-                    obj.phase = obj.phase - 2*pi;
+                    obj.phase = obj.phase - 2 * pi;
                 end
                 
                 tap = 1 + obj.delay + obj.delay * osc;
                 
-                n=floor(tap);
+                n = floor(tap);
                 frac = tap - n;
                 readIndex = floor(writeIndex - n);
                 
                 if readIndex <= 0
                     readIndex = readIndex + 192001;
                 end
+                
                 if readIndex == 1
                     y(i,:) = frac*obj.Buffer(192001) + (1-frac)*obj.Buffer(readIndex);
                 else
                     y(i,:) = frac*obj.Buffer(readIndex - 1) + (1-frac)*obj.Buffer(readIndex);
                 end
+                
                 writeIndex = writeIndex + 1;
                 if writeIndex > 192001
                     writeIndex =  1;
@@ -98,7 +100,6 @@ classdef Vibrato < handle
             obj.BufferIndex = 1;
             obj.Buffer = zeros(192001,2);
             obj.phase = 0; 
-        end
-        
+        end        
     end
 end
