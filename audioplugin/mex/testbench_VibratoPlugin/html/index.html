@@ -1,0 +1,968 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Code Generation Report</title>
+<link rel="stylesheet" type="text/css" href="resources/eml_report.css" />
+<link rel="stylesheet" type="text/css" href="resources/jQuery/ui.resizable.css" />
+<link rel="stylesheet" type="text/css" href="index.css" />
+<style>
+	pre.code{
+		-moz-tab-size: 4; /* For Firefox */
+		-o-tab-size: 4; /* For Opera 10.6-12.1 */
+		tab-size: 4; /* For Chrome */
+	}
+</style>
+<script type="text/javascript" src="resources/jQuery/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" src="resources/jQuery/jquery-ui-1.7.custom.min.js"></script>
+<script type="text/javascript" src="resources/jQuery/jquery.tablesorter.mod.js"></script>
+<script type="text/javascript" src="resources/jQuery/jquery.hotkeys-0.7.8.js"></script>
+<script type="text/javascript" src="resources/eml_report_interactions.js"></script>
+<script type="text/javascript" src="resources/eml_report_layout.js"></script>
+<script type="text/javascript" src="rtwshrink.js"></script>
+<script type="text/javascript">
+var localizedMessages = {
+    callSelectPrompt: "Select a function call:",
+    callSelectSource: "Calls from this function",
+    callSelectTarget: "Calls to this function",
+    infoForExpression: "Information for the selected expression:",
+    infoForVarType: "Information for the selected variable:",
+    infoForVarConst: "Information for the selected compile-time constant:",
+    infoForVarNone: "This variable does not have information associated with it.",
+    infoForFilter: "Matched {0}/{1} functions, {2}/{3} methods",
+    autoExtrinsicCall: "Only supported within the MATLAB environment."
+};
+var keyBindings = {
+        selectMCodeTab: "Ctrl+m",
+    selectCallStackTab: "Ctrl+k",
+        selectCCodeTab: "Ctrl+c",
+       selectReportTab: "Ctrl+r",
+     selectCenterPanel: "Ctrl+w",
+      selectSummaryTab: "Ctrl+s",
+     selectMessagesTab: "Ctrl+a",
+    selectWatchListTab: "Ctrl+v",
+     selectBuildLogTab: "Ctrl+t",
+    clearAllHighlights: "Esc"
+};
+var functionInfoTable = {
+ MATLABcode1: "testbench_VibratoPlugin1_mcode.html",
+ fpath1: "/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/testbench_VibratoPlugin.m",
+ lines1: [1, 1, 123],
+ watch1: "testbench_VibratoPlugin1_watch.html",
+ title1: "Function: <span class='functionname'><a title='/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/testbench_VibratoPlugin.m' class='functionlink' href=\"matlab: open('/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/testbench_VibratoPlugin.m')\">testbench_VibratoPlugin</a></span>",
+ tcall1: [  ],
+ scall1: [ [ "From line 36 to VibratoPlugin", "99#srcline29" ], [ "From line 40 to testbench_VibratoPlugin > initParamState", "114#srcline169" ], [ "From line 44 to reset", "135#srcline49" ], [ "From line 45 to testbench_VibratoPlugin > checkForTampering > 1", "137#srcline123" ], [ "From line 50 to testbench_VibratoPlugin > logchirp", "170#srcline153" ], [ "From line 57 to testbench_VibratoPlugin > fromNormalizedwidth", "228#srcline176" ], [ "From line 58 to set.width", "229#srcline43" ], [ "From line 60 to testbench_VibratoPlugin > checkForTampering > 2", "231#srcline123" ], [ "From line 63 to testbench_VibratoPlugin > fromNormalizedrate", "242#srcline180" ], [ "From line 64 to set.rate", "243#srcline33" ], [ "From line 66 to testbench_VibratoPlugin > checkForTampering > 3", "245#srcline123" ], [ "From line 69 to testbench_VibratoPlugin > fromNormalizedwaveform", "256#srcline184" ], [ "From line 70 to set.waveform", "257#srcline38" ], [ "From line 72 to testbench_VibratoPlugin > checkForTampering > 4", "259#srcline123" ], [ "From line 75 to testbench_VibratoPlugin > fromNormalizedMix", "270#srcline198" ], [ "From line 78 to testbench_VibratoPlugin > checkForTampering > 5", "271#srcline123" ], [ "From line 86 to process", "282#srcline53" ], [ "From line 113 to testbench_VibratoPlugin > checkForTampering > 6", "319#srcline123" ] ],
+ MATLABcode99: "VibratoPlugin99_mcode.html",
+ fpath99: "/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/VibratoPlugin.m",
+ lines99: [29, 29, 33],
+ watch99: "VibratoPlugin99_watch.html",
+ title99: "Method: <span class='functionname'><a title='/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/VibratoPlugin.m' class='functionlink' href=\"matlab: open('/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/VibratoPlugin.m')\">VibratoPlugin</a></span>",
+ tcall99: [ [ "From testbench_VibratoPlugin line 36", "1#F99N8:B78" ] ],
+ scall99: [ [ "From line 30 to Vibrato", "104#srcline18" ] ],
+ MATLABcode104: "Vibrato104_mcode.html",
+ fpath104: "/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/Vibrato.m",
+ lines104: [18, 18, 27],
+ watch104: "Vibrato104_watch.html",
+ title104: "Method: <span class='functionname'><a title='/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/Vibrato.m' class='functionlink' href=\"matlab: open('/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/Vibrato.m')\">Vibrato</a></span>",
+ tcall104: [ [ "From VibratoPlugin line 30", "99#F104N2:B102" ] ],
+ scall104: [  ],
+ MATLABcode114: "initParamState114_mcode.html",
+ fpath114: "/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/testbench_VibratoPlugin.m",
+ lines114: [168, 169, 176],
+ watch114: "initParamState114_watch.html",
+ title114: "Function: <span class='functionname'><a title='/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/testbench_VibratoPlugin.m' class='functionlink' href=\"matlab: open('/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/testbench_VibratoPlugin.m')\">testbench_VibratoPlugin &gt; initParamState</a></span>",
+ tcall114: [ [ "From testbench_VibratoPlugin line 40", "1#F114N22:B87" ] ],
+ scall114: [  ],
+ MATLABcode135: "reset135_mcode.html",
+ fpath135: "/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/VibratoPlugin.m",
+ lines135: [48, 49, 53],
+ watch135: "reset135_watch.html",
+ title135: "Method: <span class='functionname'><a title='/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/VibratoPlugin.m' class='functionlink' href=\"matlab: open('/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/VibratoPlugin.m')\">reset</a></span>",
+ tcall135: [ [ "From testbench_VibratoPlugin line 44", "1#F135N9:B96" ] ],
+ scall135: [ [ "From line 50 to reset", "136#srcline96" ] ],
+ MATLABcode136: "reset136_mcode.html",
+ fpath136: "/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/Vibrato.m",
+ lines136: [96, 96, 103],
+ watch136: "reset136_watch.html",
+ title136: "Method: <span class='functionname'><a title='/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/Vibrato.m' class='functionlink' href=\"matlab: open('/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/Vibrato.m')\">reset</a></span>",
+ tcall136: [ [ "From reset line 50", "135#F136N3:B183" ] ],
+ scall136: [  ],
+ MATLABcode137: "checkForTampering137_mcode.html",
+ fpath137: "/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/testbench_VibratoPlugin.m",
+ lines137: [122, 123, 153],
+ watch137: "checkForTampering137_watch.html",
+ title137: "Function: <span class='functionname'><a title='/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/testbench_VibratoPlugin.m' class='functionlink' href=\"matlab: open('/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/testbench_VibratoPlugin.m')\">testbench_VibratoPlugin &gt; checkForTampering &gt; 1</a></span>",
+ tcall137: [ [ "From testbench_VibratoPlugin line 45", "1#F137N17:B100" ] ],
+ scall137: [  ],
+ MATLABcode170: "logchirp170_mcode.html",
+ fpath170: "/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/testbench_VibratoPlugin.m",
+ lines170: [152, 153, 162],
+ watch170: "logchirp170_watch.html",
+ title170: "Function: <span class='functionname'><a title='/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/testbench_VibratoPlugin.m' class='functionlink' href=\"matlab: open('/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/testbench_VibratoPlugin.m')\">testbench_VibratoPlugin &gt; logchirp</a></span>",
+ tcall170: [ [ "From testbench_VibratoPlugin line 50", "1#F170N24:B123" ] ],
+ scall170: [ [ "From line 156 to testbench_VibratoPlugin > logInstantaneousPhase", "171#srcline162" ] ],
+ MATLABcode171: "logInstantaneousPhase171_mcode.html",
+ fpath171: "/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/testbench_VibratoPlugin.m",
+ lines171: [161, 162, 169],
+ watch171: "logInstantaneousPhase171_watch.html",
+ title171: "Function: <span class='functionname'><a title='/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/testbench_VibratoPlugin.m' class='functionlink' href=\"matlab: open('/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/testbench_VibratoPlugin.m')\">testbench_VibratoPlugin &gt; logInstantaneousPhase</a></span>",
+ tcall171: [ [ "From testbench_VibratoPlugin > logchirp line 156", "170#F171N23:B571" ] ],
+ scall171: [  ],
+ MATLABcode228: "fromNormalizedwidth228_mcode.html",
+ fpath228: "/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/testbench_VibratoPlugin.m",
+ lines228: [175, 176, 180],
+ watch228: "fromNormalizedwidth228_watch.html",
+ title228: "Function: <span class='functionname'><a title='/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/testbench_VibratoPlugin.m' class='functionlink' href=\"matlab: open('/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/testbench_VibratoPlugin.m')\">testbench_VibratoPlugin &gt; fromNormalizedwidth</a></span>",
+ tcall228: [ [ "From testbench_VibratoPlugin line 57", "1#F228N21:B151" ] ],
+ scall228: [  ],
+ MATLABcode229: "set46width229_mcode.html",
+ fpath229: "/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/VibratoPlugin.m",
+ lines229: [43, 43, 49],
+ watch229: "set46width229_watch.html",
+ title229: "Method: <span class='functionname'><a title='/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/VibratoPlugin.m' class='functionlink' href=\"matlab: open('/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/VibratoPlugin.m')\">set.width</a></span>",
+ tcall229: [ [ "From testbench_VibratoPlugin line 58", "1#F229N10:B169" ] ],
+ scall229: [ [ "From line 46 to setWidth", "230#srcline31" ] ],
+ MATLABcode230: "setWidth230_mcode.html",
+ fpath230: "/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/Vibrato.m",
+ lines230: [31, 31, 35],
+ watch230: "setWidth230_watch.html",
+ title230: "Method: <span class='functionname'><a title='/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/Vibrato.m' class='functionlink' href=\"matlab: open('/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/Vibrato.m')\">setWidth</a></span>",
+ tcall230: [ [ "From set.width line 46", "229#F230N4:B169" ] ],
+ scall230: [  ],
+ MATLABcode231: "checkForTampering231_mcode.html",
+ fpath231: "/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/testbench_VibratoPlugin.m",
+ lines231: [122, 123, 153],
+ watch231: "checkForTampering231_watch.html",
+ title231: "Function: <span class='functionname'><a title='/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/testbench_VibratoPlugin.m' class='functionlink' href=\"matlab: open('/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/testbench_VibratoPlugin.m')\">testbench_VibratoPlugin &gt; checkForTampering &gt; 2</a></span>",
+ tcall231: [ [ "From testbench_VibratoPlugin line 60", "1#F231N17:B179" ] ],
+ scall231: [  ],
+ MATLABcode242: "fromNormalizedrate242_mcode.html",
+ fpath242: "/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/testbench_VibratoPlugin.m",
+ lines242: [179, 180, 184],
+ watch242: "fromNormalizedrate242_watch.html",
+ title242: "Function: <span class='functionname'><a title='/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/testbench_VibratoPlugin.m' class='functionlink' href=\"matlab: open('/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/testbench_VibratoPlugin.m')\">testbench_VibratoPlugin &gt; fromNormalizedrate</a></span>",
+ tcall242: [ [ "From testbench_VibratoPlugin line 63", "1#F242N19:B188" ] ],
+ scall242: [  ],
+ MATLABcode243: "set46rate243_mcode.html",
+ fpath243: "/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/VibratoPlugin.m",
+ lines243: [32, 33, 38],
+ watch243: "set46rate243_watch.html",
+ title243: "Method: <span class='functionname'><a title='/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/VibratoPlugin.m' class='functionlink' href=\"matlab: open('/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/VibratoPlugin.m')\">set.rate</a></span>",
+ tcall243: [ [ "From testbench_VibratoPlugin line 64", "1#F243N11:B206" ] ],
+ scall243: [ [ "From line 36 to setRate", "244#srcline27" ] ],
+ MATLABcode244: "setRate244_mcode.html",
+ fpath244: "/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/Vibrato.m",
+ lines244: [27, 27, 31],
+ watch244: "setRate244_watch.html",
+ title244: "Method: <span class='functionname'><a title='/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/Vibrato.m' class='functionlink' href=\"matlab: open('/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/Vibrato.m')\">setRate</a></span>",
+ tcall244: [ [ "From set.rate line 36", "243#F244N5:B129" ] ],
+ scall244: [  ],
+ MATLABcode245: "checkForTampering245_mcode.html",
+ fpath245: "/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/testbench_VibratoPlugin.m",
+ lines245: [122, 123, 153],
+ watch245: "checkForTampering245_watch.html",
+ title245: "Function: <span class='functionname'><a title='/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/testbench_VibratoPlugin.m' class='functionlink' href=\"matlab: open('/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/testbench_VibratoPlugin.m')\">testbench_VibratoPlugin &gt; checkForTampering &gt; 3</a></span>",
+ tcall245: [ [ "From testbench_VibratoPlugin line 66", "1#F245N17:B216" ] ],
+ scall245: [  ],
+ MATLABcode256: "fromNormalizedwaveform256_mcode.html",
+ fpath256: "/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/testbench_VibratoPlugin.m",
+ lines256: [183, 184, 198],
+ watch256: "fromNormalizedwaveform256_watch.html",
+ title256: "Function: <span class='functionname'><a title='/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/testbench_VibratoPlugin.m' class='functionlink' href=\"matlab: open('/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/testbench_VibratoPlugin.m')\">testbench_VibratoPlugin &gt; fromNormalizedwaveform</a></span>",
+ tcall256: [ [ "From testbench_VibratoPlugin line 69", "1#F256N20:B225" ] ],
+ scall256: [  ],
+ MATLABcode257: "set46waveform257_mcode.html",
+ fpath257: "/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/VibratoPlugin.m",
+ lines257: [38, 38, 43],
+ watch257: "set46waveform257_watch.html",
+ title257: "Method: <span class='functionname'><a title='/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/VibratoPlugin.m' class='functionlink' href=\"matlab: open('/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/VibratoPlugin.m')\">set.waveform</a></span>",
+ tcall257: [ [ "From testbench_VibratoPlugin line 70", "1#F257N12:B243" ] ],
+ scall257: [ [ "From line 41 to setWaveform", "258#srcline35" ] ],
+ MATLABcode258: "setWaveform258_mcode.html",
+ fpath258: "/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/Vibrato.m",
+ lines258: [35, 35, 38],
+ watch258: "setWaveform258_watch.html",
+ title258: "Method: <span class='functionname'><a title='/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/Vibrato.m' class='functionlink' href=\"matlab: open('/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/Vibrato.m')\">setWaveform</a></span>",
+ tcall258: [ [ "From set.waveform line 41", "257#F258N6:B150" ] ],
+ scall258: [  ],
+ MATLABcode259: "checkForTampering259_mcode.html",
+ fpath259: "/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/testbench_VibratoPlugin.m",
+ lines259: [122, 123, 153],
+ watch259: "checkForTampering259_watch.html",
+ title259: "Function: <span class='functionname'><a title='/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/testbench_VibratoPlugin.m' class='functionlink' href=\"matlab: open('/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/testbench_VibratoPlugin.m')\">testbench_VibratoPlugin &gt; checkForTampering &gt; 4</a></span>",
+ tcall259: [ [ "From testbench_VibratoPlugin line 72", "1#F259N17:B253" ] ],
+ scall259: [  ],
+ MATLABcode270: "fromNormalizedMix270_mcode.html",
+ fpath270: "/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/testbench_VibratoPlugin.m",
+ lines270: [197, 198, 201],
+ watch270: "fromNormalizedMix270_watch.html",
+ title270: "Function: <span class='functionname'><a title='/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/testbench_VibratoPlugin.m' class='functionlink' href=\"matlab: open('/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/testbench_VibratoPlugin.m')\">testbench_VibratoPlugin &gt; fromNormalizedMix</a></span>",
+ tcall270: [ [ "From testbench_VibratoPlugin line 75", "1#F270N18:B262" ] ],
+ scall270: [  ],
+ MATLABcode271: "checkForTampering271_mcode.html",
+ fpath271: "/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/testbench_VibratoPlugin.m",
+ lines271: [122, 123, 153],
+ watch271: "checkForTampering271_watch.html",
+ title271: "Function: <span class='functionname'><a title='/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/testbench_VibratoPlugin.m' class='functionlink' href=\"matlab: open('/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/testbench_VibratoPlugin.m')\">testbench_VibratoPlugin &gt; checkForTampering &gt; 5</a></span>",
+ tcall271: [ [ "From testbench_VibratoPlugin line 78", "1#F271N17:B290" ] ],
+ scall271: [  ],
+ MATLABcode282: "process282_mcode.html",
+ fpath282: "/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/VibratoPlugin.m",
+ lines282: [52, 53, 62],
+ watch282: "process282_watch.html",
+ title282: "Method: <span class='functionname'><a title='/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/VibratoPlugin.m' class='functionlink' href=\"matlab: open('/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/VibratoPlugin.m')\">process</a></span>",
+ tcall282: [ [ "From testbench_VibratoPlugin line 86", "1#F282N13:B318" ] ],
+ scall282: [ [ "From line 55 to process", "283#srcline38" ] ],
+ MATLABcode283: "process283_mcode.html",
+ fpath283: "/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/Vibrato.m",
+ lines283: [38, 38, 96],
+ watch283: "process283_watch.html",
+ title283: "Method: <span class='functionname'><a title='/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/Vibrato.m' class='functionlink' href=\"matlab: open('/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/Vibrato.m')\">process</a></span>",
+ tcall283: [ [ "From process line 55", "282#F283N7:B201" ] ],
+ scall283: [  ],
+ MATLABcode319: "checkForTampering319_mcode.html",
+ fpath319: "/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/testbench_VibratoPlugin.m",
+ lines319: [122, 123, 153],
+ watch319: "checkForTampering319_watch.html",
+ title319: "Function: <span class='functionname'><a title='/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/testbench_VibratoPlugin.m' class='functionlink' href=\"matlab: open('/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/testbench_VibratoPlugin.m')\">testbench_VibratoPlugin &gt; checkForTampering &gt; 6</a></span>",
+ tcall319: [ [ "From testbench_VibratoPlugin line 113", "1#F319N17:B412" ] ],
+ scall319: [  ],
+ rootFcnID: "1",
+ firstPage: "1",
+ htmlRoot: "/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/audioplugin/mex/testbench_VibratoPlugin/html/"
+};
+var scriptInfoTable = {
+ fpath1: "/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/testbench_VibratoPlugin.m",
+ fpath2: "/Applications/MATLAB_R2016b.app/toolbox/eml/lib/matlab/ops/colon.m",
+ fpath3: "/Applications/MATLAB_R2016b.app/toolbox/eml/eml/+coder/+internal/isBuiltInNumeric.m",
+ fpath4: "/Applications/MATLAB_R2016b.app/toolbox/eml/lib/matlab/elmat/isnan.m",
+ fpath5: "/Applications/MATLAB_R2016b.app/toolbox/eml/lib/matlab/elmat/isinf.m",
+ fpath6: "/Applications/MATLAB_R2016b.app/toolbox/eml/lib/matlab/elfun/floor.m",
+ fpath7: "/Applications/MATLAB_R2016b.app/toolbox/eml/eml/+coder/+internal/applyScalarFunctionInPlace.m",
+ fpath8: "/Applications/MATLAB_R2016b.app/toolbox/eml/eml/+coder/+internal/+scalar/floor.m",
+ fpath9: "/Applications/MATLAB_R2016b.app/toolbox/eml/lib/matlab/ops/power.m",
+ fpath10: "/Applications/MATLAB_R2016b.app/toolbox/eml/eml/+coder/+internal/scalarEg.m",
+ fpath11: "/Applications/MATLAB_R2016b.app/toolbox/eml/lib/fixedpoint/isnumerictype.m",
+ fpath12: "/Applications/MATLAB_R2016b.app/toolbox/eml/lib/fixedpoint/isfimath.m",
+ fpath13: "/Applications/MATLAB_R2016b.app/toolbox/eml/lib/matlab/eml/eml_int_forloop_overflow_check.m",
+ fpath14: "/Applications/MATLAB_R2016b.app/toolbox/eml/lib/fixedpoint/isfi.m",
+ fpath15: "/Applications/MATLAB_R2016b.app/toolbox/eml/lib/matlab/elmat/intmax.m",
+ fpath16: "/Applications/MATLAB_R2016b.app/toolbox/eml/lib/matlab/elmat/intmin.m",
+ fpath17: "/Applications/MATLAB_R2016b.app/toolbox/eml/eml/+coder/+internal/applyScalarFunction.m",
+ fpath18: "/Applications/MATLAB_R2016b.app/toolbox/eml/eml/+coder/+internal/scalexpAlloc.m",
+ fpath19: "/Applications/MATLAB_R2016b.app/toolbox/eml/eml/+coder/+internal/scalexpAllocNoCheck.m",
+ fpath20: "/Applications/MATLAB_R2016b.app/toolbox/eml/eml/+coder/+internal/useParforConst.m",
+ fpath21: "/Applications/MATLAB_R2016b.app/toolbox/eml/eml/+coder/+internal/error.m",
+ fpath22: "/Applications/MATLAB_R2016b.app/toolbox/eml/lib/matlab/datafun/sum.m",
+ fpath23: "/Applications/MATLAB_R2016b.app/toolbox/shared/coder/coder/+coder/+internal/narginchk.m",
+ fpath24: "/Applications/MATLAB_R2016b.app/toolbox/eml/lib/matlab/datafun/private/sumprod.m",
+ fpath25: "/Applications/MATLAB_R2016b.app/toolbox/eml/lib/matlab/datafun/private/process_sumprod_inputs.m",
+ fpath26: "/Applications/MATLAB_R2016b.app/toolbox/eml/eml/+coder/+internal/constNonSingletonDim.m",
+ fpath27: "/Applications/MATLAB_R2016b.app/toolbox/eml/lib/matlab/elmat/isequal.m",
+ fpath28: "/Applications/MATLAB_R2016b.app/toolbox/eml/lib/matlab/elmat/private/eml_isequal_core.m",
+ fpath29: "/Applications/MATLAB_R2016b.app/toolbox/eml/lib/matlab/datafun/private/combine_vector_elements.m",
+ fpath30: "/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/VibratoPlugin.m",
+ fpath31: "/Applications/MATLAB_R2016b.app/toolbox/audio/audio/compiled/audioPlugin.p",
+ fpath32: "/Applications/MATLAB_R2016b.app/toolbox/coder/coder/+coder/+internal/matlabCodegenHandle.p",
+ fpath33: "/Users/nikolajandersson/Documents/MATLAB/git/VibratoMatlab/Vibrato.m",
+ fpath34: "/Applications/MATLAB_R2016b.app/toolbox/eml/lib/matlab/elfun/round.m",
+ fpath35: "/Applications/MATLAB_R2016b.app/toolbox/eml/eml/+coder/+internal/+scalar/round.m",
+ fpath36: "/Applications/MATLAB_R2016b.app/toolbox/eml/lib/matlab/ops/mrdivide.p",
+ fpath37: "/Applications/MATLAB_R2016b.app/toolbox/eml/lib/matlab/ops/rdivide.m",
+ fpath38: "/Applications/MATLAB_R2016b.app/toolbox/eml/eml/+coder/+internal/scalexpCompatible.m",
+ fpath39: "/Applications/MATLAB_R2016b.app/toolbox/eml/eml/+coder/+internal/div.m",
+ fpath40: "/Applications/MATLAB_R2016b.app/toolbox/eml/lib/matlab/lang/validateattributes.m",
+ fpath41: "/Applications/MATLAB_R2016b.app/toolbox/eml/lib/matlab/strfun/char.m",
+ fpath42: "/Applications/MATLAB_R2016b.app/toolbox/eml/lib/matlab/elmat/isfinite.m",
+ fpath43: "/Applications/MATLAB_R2016b.app/toolbox/eml/lib/matlab/lang/error.m",
+ fpath44: "/Applications/MATLAB_R2016b.app/toolbox/eml/lib/matlab/ops/eml_mtimes_helper.m",
+ fpath45: "/Applications/MATLAB_R2016b.app/toolbox/eml/lib/matlab/elfun/log.m",
+ fpath46: "/Applications/MATLAB_R2016b.app/toolbox/eml/eml/+coder/+internal/isDomainError.m",
+ fpath47: "/Applications/MATLAB_R2016b.app/toolbox/eml/eml/+coder/+internal/+scalar/log.m",
+ fpath48: "/Applications/MATLAB_R2016b.app/toolbox/eml/lib/matlab/elmat/realmax.m",
+ fpath49: "/Applications/MATLAB_R2016b.app/toolbox/eml/lib/matlab/elmat/private/eml_realmax.m",
+ fpath50: "/Applications/MATLAB_R2016b.app/toolbox/eml/eml/+coder/+internal/floatModel.m",
+ fpath51: "/Applications/MATLAB_R2016b.app/toolbox/eml/lib/matlab/elfun/sin.m",
+ fpath52: "/Applications/MATLAB_R2016b.app/toolbox/eml/eml/+coder/+internal/+scalar/sin.m",
+ fpath53: "/Applications/MATLAB_R2016b.app/toolbox/eml/lib/matlab/elfun/mod.m",
+ fpath54: "/Applications/MATLAB_R2016b.app/toolbox/eml/eml/+coder/+internal/+scalar/mod.m",
+ fpath55: "/Applications/MATLAB_R2016b.app/toolbox/eml/eml/+coder/+internal/+scalar/abs.m",
+ fpath56: "/Applications/MATLAB_R2016b.app/toolbox/eml/lib/matlab/elmat/eps.m",
+ fpath57: "/Applications/MATLAB_R2016b.app/toolbox/eml/eml/+coder/+internal/isFloatClass.m",
+ fpath58: "/Applications/MATLAB_R2016b.app/toolbox/eml/lib/matlab/elmat/private/eml_eps.m",
+ fpath59: "/Applications/MATLAB_R2016b.app/toolbox/eml/lib/matlab/eml/eml_switch_helper.m",
+ fpath60: "/Applications/MATLAB_R2016b.app/toolbox/eml/eml/+coder/+internal/strcmp.m"
+};
+</script>
+</head>
+<body>
+
+<div class="west">
+<ul class="ui-tabs-nav">
+<li class="ui-tabs-nav-item ui-tabs-selected"><span class="tab-link" id="MATLABcode"><span>MATLAB code</span></span></li>
+<li class="ui-tabs-nav-item"><span class="tab-link" id="callstack"><span>Call stack</span></span></li>
+<li class="ui-tabs-nav-item"><span class="tab-link" id="ccode"><span>C code</span></span></li>
+</ul>
+<div id="MATLABcodebody" class="ui-tabs-panel">
+<!-- Begin Filter -->
+<div class="grayline methodset" onclick="filterClick(event);">
+<a class="collapsed">Filter</a>
+</div>
+<div id="filterbody" class="hidden">
+<table class="myfunc-filter-tbl">
+<tr>
+<td title="Use this filter to display only functions and methods that contain variables or expressions with the specified attributes." colspan="2" class="checkbox">
+<div class="myfunc-filterby-chk"><input type="checkbox" class="filterenable" />
+<div class="filter-enable-lbl">Filter functions and methods</div></div></td></tr><tr>
+<td class="label"><div class="myfunc-filterby-lbl">Filter by:</div></td>
+<td class="select">
+<div class="filters">
+<select class="myfunc-filterby">
+<option id="size">Size</option>
+<option id="complex">Complexity</option>
+<option id="class">Class</option>
+</select>
+</div>
+</td>
+</tr>
+
+<tr>
+<td class="label"><div class="myfunc-filterstr-lbl">Filter:</div></td>
+<td class="input"><div>
+
+<div class="size">
+<select class="myfunc-filter size">
+<option value="1 99 104 114 135 136 137 170 171 228 229 230 231 242 243 244 245 256 257 258 259 270 271 282 283 319">1 x 1</option>
+<option value="319">1 x 14</option>
+<option value="137">1 x 16</option>
+<option value="1 170">1 x 2</option>
+<option value="271">1 x 23</option>
+<option value="245">1 x 24</option>
+<option value="231">1 x 25</option>
+<option value="259">1 x 28</option>
+<option value="1">1 x 38</option>
+<option value="1 99 104 114 135 136 137 229 230 231 243 244 245 257 259 271 282 283 319">1 x 4</option>
+<option value="171">1 x 49145</option>
+<option value="1">1 x 5</option>
+<option value="1 256 257 258">1 x <b>:</b>?</option>
+<option value="1 135 136 137 229 230 231 243 244 245 257 258 259 271 282 283 319">192001 x 2</option>
+<option value="1">245725 x 2</option>
+<option value="170 171">49145 x 1</option>
+<option value="1 170">49145 x 2</option>
+<option value="1 282 283"><b>:</b>? x 2</option>
+</select>
+</div>
+
+<div class="complex">
+<select class="myfunc-filter complex">
+<option value="">Complex values</option>
+<option value="1 99 104 114 135 136 137 170 171 228 229 230 231 242 243 244 245 256 257 258 259 270 271 282 283 319">Real values</option>
+</select>
+</div>
+<!-- Begin Class Filter -->
+<div class="class">
+<select class="myfunc-filter class">
+<option value="1 99 104 114 135 136 137 229 230 231 243 244 245 257 258 259 271 282 283 319">Vibrato</option>
+<option value="1 99 114 135 137 229 231 243 245 257 259 271 282 319">VibratoPlugin</option>
+<option value="1 99 104 114 135 136 137 229 230 231 243 244 245 256 257 258 259 271 282 283 319">char</option>
+<option value="1 99 104 114 135 136 137 170 171 228 229 230 231 242 243 244 245 256 257 258 259 270 271 282 283 319">double</option>
+<option value="1 99 104 114 135 136 137 229 230 231 243 244 245 257 258 259 271 282 283 319">logical</option>
+<option value="1 114 137 231 245 259 271 319">struct</option>
+<option value="1 99 114 135 137 229 231 243 245 257 259 271 282 319">uint64</option>
+</select>
+</div>
+<!-- End Class Filter -->
+</div>
+</td>
+</tr>
+</table>
+<div class="myfunc-count"></div>
+</div>
+<!-- End Filter -->
+<div class="grayline methodset" onmouseover="callTreeMouseOver(event);" onmouseout="callTreeMouseOut(event);" onclick="functionSetClick(event);">
+<a class="expanded">Functions</a>
+</div>
+<!-- Begin Function Tree -->
+<div id="functiontreebody">
+<div class="functionwrapper" onmouseover="callTreeMouseOver(event);" onmouseout="callTreeMouseOut(event);" onclick="functionTreeClick(event);">
+<ol class="tree">
+<!-- Begin Function Tree Roots -->
+<li class="leaf  failed"><a href="#" class="fcn  ED1 ED2 " id="F1N16:F1">testbench_VibratoPlugin</a></li>
+<li class="leaf  passed"><a href="#" class="fcn  " id="F137N17:F2">testbench_VibratoPlugin &gt; checkForTampering &gt; 1</a></li>
+<li class="leaf  passed"><a href="#" class="fcn  " id="F231N17:F3">testbench_VibratoPlugin &gt; checkForTampering &gt; 2</a></li>
+<li class="leaf  passed"><a href="#" class="fcn  " id="F245N17:F4">testbench_VibratoPlugin &gt; checkForTampering &gt; 3</a></li>
+<li class="leaf  passed"><a href="#" class="fcn  " id="F259N17:F5">testbench_VibratoPlugin &gt; checkForTampering &gt; 4</a></li>
+<li class="leaf  passed"><a href="#" class="fcn  " id="F271N17:F6">testbench_VibratoPlugin &gt; checkForTampering &gt; 5</a></li>
+<li class="leaf  passed"><a href="#" class="fcn  " id="F319N17:F7">testbench_VibratoPlugin &gt; checkForTampering &gt; 6</a></li>
+<li class="leaf  passed"><a href="#" class="fcn  " id="F270N18:F8">testbench_VibratoPlugin &gt; fromNormalizedMix</a></li>
+<li class="leaf  passed"><a href="#" class="fcn  " id="F242N19:F9">testbench_VibratoPlugin &gt; fromNormalizedrate</a></li>
+<li class="leaf  passed"><a href="#" class="fcn  " id="F256N20:F10">testbench_VibratoPlugin &gt; fromNormalizedwaveform</a></li>
+<li class="leaf  passed"><a href="#" class="fcn  " id="F228N21:F11">testbench_VibratoPlugin &gt; fromNormalizedwidth</a></li>
+<li class="leaf  passed"><a href="#" class="fcn  " id="F114N22:F12">testbench_VibratoPlugin &gt; initParamState</a></li>
+<li class="leaf  passed"><a href="#" class="fcn  " id="F171N23:F13">testbench_VibratoPlugin &gt; logInstantaneousPhase</a></li>
+<li class="leaf  passed"><a href="#" class="fcn  " id="F170N24:F14">testbench_VibratoPlugin &gt; logchirp</a></li>
+<!-- End Function Tree Roots -->
+</ol>
+<!-- Function Tree Nodes -->
+<div class="functiontreenodes hidden">
+</div>
+<!-- End Function Tree Nodes -->
+</div>
+</div>
+<!-- End Function Tree -->
+<!-- Begin Class Tree -->
+<div class="grayline methodset" onmouseover="callTreeMouseOver(event);" onmouseout="callTreeMouseOut(event);" onclick="methodSetClick(event);">
+<a class="expanded">Classes</a>
+</div>
+<div id="classlistbody">
+<div class="classwrapper" onmouseover="callTreeMouseOver(event);" onmouseout="callTreeMouseOut(event);" onclick="classTreeClick(event);">
+<ol class="tree">
+<!-- Begin Class Tree Roots -->
+<li class="node collapsed passed"><a class="classroot" title="Vibrato">Vibrato</a>
+<ul>
+<li class="node collapsed passed"><a class="classroot" id="F104N2:M13" title="Vibrato">Vibrato.1</a></li>
+<li class="node collapsed passed"><a class="classroot" id="F136N3:M14" title="Vibrato">Vibrato.2</a></li>
+<li class="node collapsed passed"><a class="classroot" id="F230N4:M15" title="Vibrato">Vibrato.3</a></li>
+<li class="node collapsed passed"><a class="classroot" id="F244N5:M16" title="Vibrato">Vibrato.4</a></li>
+<li class="node collapsed passed"><a class="classroot" id="F258N6:M17" title="Vibrato">Vibrato.5</a></li>
+<li class="node collapsed passed"><a class="classroot" id="F283N7:M18" title="Vibrato">Vibrato.6</a></li>
+</ul>
+</li>
+<li class="node collapsed failed"><a class="classroot" title="VibratoPlugin">VibratoPlugin</a>
+<ul>
+<li class="node collapsed passed"><a class="classroot" id="F99N8:M19" title="VibratoPlugin">VibratoPlugin.1</a></li>
+<li class="node collapsed passed"><a class="classroot" id="F135N9:M20" title="VibratoPlugin">VibratoPlugin.2</a></li>
+<li class="node collapsed passed"><a class="classroot" id="F229N10:M21" title="VibratoPlugin">VibratoPlugin.3</a></li>
+<li class="node collapsed passed"><a class="classroot" id="F243N11:M22" title="VibratoPlugin">VibratoPlugin.4</a></li>
+<li class="node collapsed failed"><a class="classroot" id="F257N12:M23" title="VibratoPlugin">VibratoPlugin.5</a></li>
+<li class="node collapsed passed"><a class="classroot" id="F282N13:M24" title="VibratoPlugin">VibratoPlugin.6</a></li>
+</ul>
+</li>
+<!-- End Class Tree Roots -->
+</ol>
+<!-- Class Tree Nodes -->
+<div class="classlistnodes hidden">
+<ol class="callstacknode" id="callstacknode99">
+<li class="node collapsed"><a>VibratoPlugin.1</a>
+<ul>
+<li class="leaf passed"><a href="#" class="fcn " id="F99N8:m7" title="VibratoPlugin.VibratoPlugin">VibratoPlugin</a></li>
+</ul>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode104">
+<li class="node collapsed"><a>Vibrato.1</a>
+<ul>
+<li class="leaf passed"><a href="#" class="fcn " id="F104N2:m1" title="Vibrato.Vibrato">Vibrato</a></li>
+</ul>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode135">
+<li class="node collapsed"><a>VibratoPlugin.2</a>
+<ul>
+<li class="leaf passed"><a href="#" class="fcn " id="F135N9:m8" title="VibratoPlugin.reset">reset</a></li>
+</ul>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode136">
+<li class="node collapsed"><a>Vibrato.2</a>
+<ul>
+<li class="leaf passed"><a href="#" class="fcn " id="F136N3:m2" title="Vibrato.reset">reset</a></li>
+</ul>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode229">
+<li class="node collapsed"><a>VibratoPlugin.3</a>
+<ul>
+<li class="leaf passed"><a href="#" class="fcn " id="F229N10:m9" title="VibratoPlugin.set.width">set.width</a></li>
+</ul>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode230">
+<li class="node collapsed"><a>Vibrato.3</a>
+<ul>
+<li class="leaf passed"><a href="#" class="fcn " id="F230N4:m3" title="Vibrato.setWidth">setWidth</a></li>
+</ul>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode243">
+<li class="node collapsed"><a>VibratoPlugin.4</a>
+<ul>
+<li class="leaf passed"><a href="#" class="fcn " id="F243N11:m10" title="VibratoPlugin.set.rate">set.rate</a></li>
+</ul>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode244">
+<li class="node collapsed"><a>Vibrato.4</a>
+<ul>
+<li class="leaf passed"><a href="#" class="fcn " id="F244N5:m4" title="Vibrato.setRate">setRate</a></li>
+</ul>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode257">
+<li class="node collapsed"><a>VibratoPlugin.5</a>
+<ul>
+<li class="leaf failed"><a href="#" class="fcn " id="F257N12:m11" title="VibratoPlugin.set.waveform">set.waveform</a></li>
+</ul>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode258">
+<li class="node collapsed"><a>Vibrato.5</a>
+<ul>
+<li class="leaf passed"><a href="#" class="fcn " id="F258N6:m5" title="Vibrato.setWaveform">setWaveform</a></li>
+</ul>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode282">
+<li class="node collapsed"><a>VibratoPlugin.6</a>
+<ul>
+<li class="leaf passed"><a href="#" class="fcn " id="F282N13:m12" title="VibratoPlugin.process">process</a></li>
+</ul>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode283">
+<li class="node collapsed"><a>Vibrato.6</a>
+<ul>
+<li class="leaf passed"><a href="#" class="fcn " id="F283N7:m6" title="Vibrato.process">process</a></li>
+</ul>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<!-- End Class Tree -->
+</div>
+<!-- Begin Call Tree -->
+<div id="callstackbody" class="ui-tabs-panel hidden">
+<div class="treewrapper" onmouseover="callTreeMouseOver(event);" onmouseout="callTreeMouseOut(event);" onclick="callTreeClick(event);">
+<ol class="tree">
+<!-- Call Tree Root -->
+<li class="node collapsed failed"><a href="#" class="fcn " id="F1N16:L1">testbench_VibratoPlugin</a>
+<ul>
+<li class="node collapsed passed"><a href="#" class="fcn " id="F99N8:L2" title="VibratoPlugin.VibratoPlugin">VibratoPlugin</a></li>
+<li class="leaf passed"><a href="#" class="fcn " id="F114N22:L3">testbench_VibratoPlugin &gt; initParamState</a></li>
+<li class="node collapsed passed"><a href="#" class="fcn " id="F135N9:L4" title="VibratoPlugin.reset">reset</a></li>
+<li class="leaf passed"><a href="#" class="fcn " id="F137N17:L5">testbench_VibratoPlugin &gt; checkForTampering &gt; 1</a></li>
+<li class="node collapsed passed"><a href="#" class="fcn " id="F170N24:L6">testbench_VibratoPlugin &gt; logchirp</a></li>
+<li class="leaf passed"><a href="#" class="fcn " id="F228N21:L7">testbench_VibratoPlugin &gt; fromNormalizedwidth</a></li>
+<li class="node collapsed passed"><a href="#" class="fcn " id="F229N10:L8" title="VibratoPlugin.set.width">set.width</a></li>
+<li class="leaf passed"><a href="#" class="fcn " id="F231N17:L9">testbench_VibratoPlugin &gt; checkForTampering &gt; 2</a></li>
+<li class="leaf passed"><a href="#" class="fcn " id="F242N19:L10">testbench_VibratoPlugin &gt; fromNormalizedrate</a></li>
+<li class="node collapsed passed"><a href="#" class="fcn " id="F243N11:L11" title="VibratoPlugin.set.rate">set.rate</a></li>
+<li class="leaf passed"><a href="#" class="fcn " id="F245N17:L12">testbench_VibratoPlugin &gt; checkForTampering &gt; 3</a></li>
+<li class="leaf passed"><a href="#" class="fcn " id="F256N20:L13">testbench_VibratoPlugin &gt; fromNormalizedwaveform</a></li>
+<li class="node collapsed failed"><a href="#" class="fcn " id="F257N12:L14" title="VibratoPlugin.set.waveform">set.waveform</a></li>
+<li class="leaf passed"><a href="#" class="fcn " id="F259N17:L15">testbench_VibratoPlugin &gt; checkForTampering &gt; 4</a></li>
+<li class="leaf passed"><a href="#" class="fcn " id="F270N18:L16">testbench_VibratoPlugin &gt; fromNormalizedMix</a></li>
+<li class="leaf passed"><a href="#" class="fcn " id="F271N17:L17">testbench_VibratoPlugin &gt; checkForTampering &gt; 5</a></li>
+<li class="node collapsed passed"><a href="#" class="fcn " id="F282N13:L18" title="VibratoPlugin.process">process</a></li>
+<li class="leaf passed"><a href="#" class="fcn " id="F319N17:L19">testbench_VibratoPlugin &gt; checkForTampering &gt; 6</a></li>
+</ul>
+</li>
+</ol>
+<!-- Call Tree Nodes -->
+<div class="callstacknodes hidden">
+<ol class="callstacknode" id="callstacknode1">
+
+<li class="node collapsed failed"><a href="#" class="fcn " id="F1N16:l1">testbench_VibratoPlugin</a>
+<ul>
+<li class="node collapsed passed"><a href="#" class="fcn " id="F99N8:l2" title="VibratoPlugin.VibratoPlugin">VibratoPlugin</a></li>
+<li class="leaf passed"><a href="#" class="fcn " id="F114N22:l3">testbench_VibratoPlugin &gt; initParamState</a></li>
+<li class="node collapsed passed"><a href="#" class="fcn " id="F135N9:l4" title="VibratoPlugin.reset">reset</a></li>
+<li class="leaf passed"><a href="#" class="fcn " id="F137N17:l5">testbench_VibratoPlugin &gt; checkForTampering &gt; 1</a></li>
+<li class="node collapsed passed"><a href="#" class="fcn " id="F170N24:l6">testbench_VibratoPlugin &gt; logchirp</a></li>
+<li class="leaf passed"><a href="#" class="fcn " id="F228N21:l7">testbench_VibratoPlugin &gt; fromNormalizedwidth</a></li>
+<li class="node collapsed passed"><a href="#" class="fcn " id="F229N10:l8" title="VibratoPlugin.set.width">set.width</a></li>
+<li class="leaf passed"><a href="#" class="fcn " id="F231N17:l9">testbench_VibratoPlugin &gt; checkForTampering &gt; 2</a></li>
+<li class="leaf passed"><a href="#" class="fcn " id="F242N19:l10">testbench_VibratoPlugin &gt; fromNormalizedrate</a></li>
+<li class="node collapsed passed"><a href="#" class="fcn " id="F243N11:l11" title="VibratoPlugin.set.rate">set.rate</a></li>
+<li class="leaf passed"><a href="#" class="fcn " id="F245N17:l12">testbench_VibratoPlugin &gt; checkForTampering &gt; 3</a></li>
+<li class="leaf passed"><a href="#" class="fcn " id="F256N20:l13">testbench_VibratoPlugin &gt; fromNormalizedwaveform</a></li>
+<li class="node collapsed failed"><a href="#" class="fcn " id="F257N12:l14" title="VibratoPlugin.set.waveform">set.waveform</a></li>
+<li class="leaf passed"><a href="#" class="fcn " id="F259N17:l15">testbench_VibratoPlugin &gt; checkForTampering &gt; 4</a></li>
+<li class="leaf passed"><a href="#" class="fcn " id="F270N18:l16">testbench_VibratoPlugin &gt; fromNormalizedMix</a></li>
+<li class="leaf passed"><a href="#" class="fcn " id="F271N17:l17">testbench_VibratoPlugin &gt; checkForTampering &gt; 5</a></li>
+<li class="node collapsed passed"><a href="#" class="fcn " id="F282N13:l18" title="VibratoPlugin.process">process</a></li>
+<li class="leaf passed"><a href="#" class="fcn " id="F319N17:l19">testbench_VibratoPlugin &gt; checkForTampering &gt; 6</a></li>
+</ul>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode99">
+
+<li class="node collapsed passed"><a href="#" class="fcn " id="F99N8:l20" title="VibratoPlugin.VibratoPlugin">VibratoPlugin</a>
+<ul>
+<li class="leaf passed"><a href="#" class="fcn " id="F104N2:l21" title="Vibrato.Vibrato">Vibrato</a></li>
+</ul>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode104">
+
+<li class="leaf passed"><a href="#" class="fcn " id="F104N2:l22" title="Vibrato.Vibrato">Vibrato</a>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode114">
+
+<li class="leaf passed"><a href="#" class="fcn " id="F114N22:l23">testbench_VibratoPlugin &gt; initParamState</a>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode135">
+
+<li class="node collapsed passed"><a href="#" class="fcn " id="F135N9:l24" title="VibratoPlugin.reset">reset</a>
+<ul>
+<li class="leaf passed"><a href="#" class="fcn " id="F136N3:l25" title="Vibrato.reset">reset</a></li>
+</ul>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode136">
+
+<li class="leaf passed"><a href="#" class="fcn " id="F136N3:l26" title="Vibrato.reset">reset</a>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode137">
+
+<li class="leaf passed"><a href="#" class="fcn " id="F137N17:l27">testbench_VibratoPlugin &gt; checkForTampering &gt; 1</a>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode170">
+
+<li class="node collapsed passed"><a href="#" class="fcn " id="F170N24:l28">testbench_VibratoPlugin &gt; logchirp</a>
+<ul>
+<li class="leaf passed"><a href="#" class="fcn " id="F171N23:l29">testbench_VibratoPlugin &gt; logInstantaneousPhase</a></li>
+</ul>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode171">
+
+<li class="leaf passed"><a href="#" class="fcn " id="F171N23:l30">testbench_VibratoPlugin &gt; logInstantaneousPhase</a>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode228">
+
+<li class="leaf passed"><a href="#" class="fcn " id="F228N21:l31">testbench_VibratoPlugin &gt; fromNormalizedwidth</a>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode229">
+
+<li class="node collapsed passed"><a href="#" class="fcn " id="F229N10:l32" title="VibratoPlugin.set.width">set.width</a>
+<ul>
+<li class="leaf passed"><a href="#" class="fcn " id="F230N4:l33" title="Vibrato.setWidth">setWidth</a></li>
+</ul>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode230">
+
+<li class="leaf passed"><a href="#" class="fcn " id="F230N4:l34" title="Vibrato.setWidth">setWidth</a>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode231">
+
+<li class="leaf passed"><a href="#" class="fcn " id="F231N17:l35">testbench_VibratoPlugin &gt; checkForTampering &gt; 2</a>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode242">
+
+<li class="leaf passed"><a href="#" class="fcn " id="F242N19:l36">testbench_VibratoPlugin &gt; fromNormalizedrate</a>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode243">
+
+<li class="node collapsed passed"><a href="#" class="fcn " id="F243N11:l37" title="VibratoPlugin.set.rate">set.rate</a>
+<ul>
+<li class="leaf passed"><a href="#" class="fcn " id="F244N5:l38" title="Vibrato.setRate">setRate</a></li>
+</ul>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode244">
+
+<li class="leaf passed"><a href="#" class="fcn " id="F244N5:l39" title="Vibrato.setRate">setRate</a>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode245">
+
+<li class="leaf passed"><a href="#" class="fcn " id="F245N17:l40">testbench_VibratoPlugin &gt; checkForTampering &gt; 3</a>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode256">
+
+<li class="leaf passed"><a href="#" class="fcn " id="F256N20:l41">testbench_VibratoPlugin &gt; fromNormalizedwaveform</a>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode257">
+
+<li class="node collapsed failed"><a href="#" class="fcn " id="F257N12:l42" title="VibratoPlugin.set.waveform">set.waveform</a>
+<ul>
+<li class="leaf passed"><a href="#" class="fcn " id="F258N6:l43" title="Vibrato.setWaveform">setWaveform</a></li>
+</ul>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode258">
+
+<li class="leaf passed"><a href="#" class="fcn " id="F258N6:l44" title="Vibrato.setWaveform">setWaveform</a>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode259">
+
+<li class="leaf passed"><a href="#" class="fcn " id="F259N17:l45">testbench_VibratoPlugin &gt; checkForTampering &gt; 4</a>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode270">
+
+<li class="leaf passed"><a href="#" class="fcn " id="F270N18:l46">testbench_VibratoPlugin &gt; fromNormalizedMix</a>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode271">
+
+<li class="leaf passed"><a href="#" class="fcn " id="F271N17:l47">testbench_VibratoPlugin &gt; checkForTampering &gt; 5</a>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode282">
+
+<li class="node collapsed passed"><a href="#" class="fcn " id="F282N13:l48" title="VibratoPlugin.process">process</a>
+<ul>
+<li class="leaf passed"><a href="#" class="fcn " id="F283N7:l49" title="Vibrato.process">process</a></li>
+</ul>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode283">
+
+<li class="leaf passed"><a href="#" class="fcn " id="F283N7:l50" title="Vibrato.process">process</a>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode319">
+
+<li class="leaf passed"><a href="#" class="fcn " id="F319N17:l51">testbench_VibratoPlugin &gt; checkForTampering &gt; 6</a>
+</li>
+</ol>
+
+</div>
+</div>
+</div>
+<!-- End Call Tree -->
+<!-- Begin C Code -->
+<div id="ccodebody" class="ui-tabs-panel hidden">
+</div>
+<!-- End C Code -->
+</div>
+<!-- Tooltips -->
+<div class="aux hidden">
+<div class="tooltips">
+<div class="tooltip" id="TT1"><table class="tooltip"><tr><th>Size</th><td>245725 x 2</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT2"><table class="tooltip"><tr><th>Size</th><td>1 x 5</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT3"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT4"><table class="tooltip"><tr><th>Size</th><td>1 x 38</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT5"><table class="tooltip"><tr><th>Size</th><td>2 x 1</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT6"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>VibratoPlugin</td></tr></table></div>
+<div class="tooltip" id="TT7"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>logical</td></tr></table></div>
+<div class="tooltip" id="TT8"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>uint64</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT9"><table class="tooltip"><tr><th>Size</th><td>1 x 4</td></tr><tr><th>Class</th><td>char</td></tr></table></div>
+<div class="tooltip" id="TT10"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>Vibrato</td></tr></table></div>
+<div class="tooltip" id="TT11"><table class="tooltip"><tr><th>Size</th><td>192001 x 2</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT12"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>struct</td></tr></table></div>
+<div class="tooltip" id="TT13"><table class="tooltip"><tr><th>Size</th><td>1 x 2</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT14"><table class="tooltip"><tr><th>Size</th><td>49145 x 2</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT15"><table class="tooltip"><tr><th>Size</th><td>38 x 1</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT16"><table class="tooltip"><tr><th>Size</th><td>1 x <b>:</b>?</td></tr><tr><th>Class</th><td>char</td></tr></table></div>
+<div class="tooltip" id="TT17"><table class="tooltip"><tr><th>Size</th><td><b>:</b>? x 2</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT18"><table class="tooltip"><tr><th>Size</th><td>1 x <b>:</b>?</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT19"><table class="tooltip"><tr><th>Size</th><td><b>:</b>? x 1</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT20"><table class="tooltip"><tr><th>Size</th><td>1 x 13</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT21"><table class="tooltip"><tr><th>Size</th><td>1 x 6</td></tr><tr><th>Class</th><td>char</td></tr></table></div>
+<div class="tooltip" id="TT22"><table class="tooltip"><tr><th>Size</th><td>1 x 5</td></tr><tr><th>Class</th><td>char</td></tr></table></div>
+<div class="tooltip" id="TT23"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>function_handle</td></tr></table></div>
+<div class="tooltip" id="TT24"><table class="tooltip"><tr><th>Size</th><td>1 x 0</td></tr><tr><th>Class</th><td>cell</td></tr></table></div>
+<div class="tooltip" id="TT25"><table class="tooltip"><tr><th>Size</th><td>1 x 2</td></tr><tr><th>Class</th><td>cell</td></tr></table></div>
+<div class="tooltip" id="TT26"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT27"><table class="tooltip"><tr><th>Size</th><td>1 x 23</td></tr><tr><th>Class</th><td>char</td></tr></table></div>
+<div class="tooltip" id="TT28"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>cell</td></tr></table></div>
+<div class="tooltip" id="TT29"><table class="tooltip"><tr><th>Size</th><td>1 x 14</td></tr><tr><th>Class</th><td>char</td></tr></table></div>
+<div class="tooltip" id="TT30"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>function_handle</td></tr></table></div>
+<div class="tooltip" id="TT31"><table class="tooltip"><tr><th>Size</th><td>13 x 1</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT32"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>mxArray</td></tr></table></div>
+<div class="tooltip" id="TT33"><table class="tooltip"><tr><th>Size</th><td>13 x 1</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT34"><table class="tooltip"><tr><th>Size</th><td>1 x 31</td></tr><tr><th>Class</th><td>char</td></tr></table></div>
+<div class="tooltip" id="TT35"><table class="tooltip"><tr><th>Size</th><td>1 x 12</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT36"><table class="tooltip"><tr><th>Size</th><td>12 x 1</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT37"><table class="tooltip"><tr><th>Size</th><td>12 x 1</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT38"><table class="tooltip"><tr><th>Size</th><td>1 x 3</td></tr><tr><th>Class</th><td>char</td></tr></table></div>
+<div class="tooltip" id="TT39"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>function_handle</td></tr></table></div>
+<div class="tooltip" id="TT40"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>int8</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT41"><table class="tooltip"><tr><th>Size</th><td>1 x 7</td></tr><tr><th>Class</th><td>char</td></tr></table></div>
+<div class="tooltip" id="TT42"><table class="tooltip"><tr><th>Size</th><td>0 x 0</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT43"><table class="tooltip"><tr><th>Size</th><td>2 x 1</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT44"><table class="tooltip"><tr><th>Size</th><td>37 x 1</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT45"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>VibratoPlugin</td></tr></table></div>
+<div class="tooltip" id="TT46"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>Vibrato</td></tr></table></div>
+<div class="tooltip" id="TT47"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>Vibrato</td></tr></table></div>
+<div class="tooltip" id="TT48"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>function_handle</td></tr></table></div>
+<div class="tooltip" id="TT49"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>VibratoPlugin</td></tr></table></div>
+<div class="tooltip" id="TT50"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>Vibrato</td></tr></table></div>
+<div class="tooltip" id="TT51"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>cell</td></tr></table></div>
+<div class="tooltip" id="TT52"><table class="tooltip"><tr><th>Size</th><td>1 x 4</td></tr><tr><th>Class</th><td>cell</td></tr></table></div>
+<div class="tooltip" id="TT53"><table class="tooltip"><tr><th>Size</th><td>1 x 11</td></tr><tr><th>Class</th><td>char</td></tr></table></div>
+<div class="tooltip" id="TT54"><table class="tooltip"><tr><th>Size</th><td>1 x 13</td></tr><tr><th>Class</th><td>char</td></tr></table></div>
+<div class="tooltip" id="TT55"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>cell</td></tr></table></div>
+<div class="tooltip" id="TT56"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>cell</td></tr></table></div>
+<div class="tooltip" id="TT57"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>cell</td></tr></table></div>
+<div class="tooltip" id="TT58"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>cell</td></tr></table></div>
+<div class="tooltip" id="TT59"><table class="tooltip"><tr><th>Size</th><td>1 x 4</td></tr><tr><th>Class</th><td>cell</td></tr></table></div>
+<div class="tooltip" id="TT60"><table class="tooltip"><tr><th>Size</th><td>1 x 4</td></tr><tr><th>Class</th><td>cell</td></tr></table></div>
+<div class="tooltip" id="TT61"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>cell</td></tr></table></div>
+<div class="tooltip" id="TT62"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>function_handle</td></tr></table></div>
+<div class="tooltip" id="TT63"><table class="tooltip"><tr><th>Size</th><td>1 x 35</td></tr><tr><th>Class</th><td>char</td></tr></table></div>
+<div class="tooltip" id="TT64"><table class="tooltip"><tr><th>Size</th><td>1 x 27</td></tr><tr><th>Class</th><td>char</td></tr></table></div>
+<div class="tooltip" id="TT65"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>function_handle</td></tr></table></div>
+<div class="tooltip" id="TT66"><table class="tooltip"><tr><th>Size</th><td>1 x 40</td></tr><tr><th>Class</th><td>char</td></tr></table></div>
+<div class="tooltip" id="TT67"><table class="tooltip"><tr><th>Size</th><td>1 x 19</td></tr><tr><th>Class</th><td>char</td></tr></table></div>
+<div class="tooltip" id="TT68"><table class="tooltip"><tr><th>Size</th><td>1 x 32</td></tr><tr><th>Class</th><td>char</td></tr></table></div>
+<div class="tooltip" id="TT69"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>VibratoPlugin</td></tr></table></div>
+<div class="tooltip" id="TT70"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>Vibrato</td></tr></table></div>
+<div class="tooltip" id="TT71"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>Vibrato</td></tr></table></div>
+<div class="tooltip" id="TT72"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>VibratoPlugin</td></tr></table></div>
+<div class="tooltip" id="TT73"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>Vibrato</td></tr></table></div>
+<div class="tooltip" id="TT74"><table class="tooltip"><tr><th>Size</th><td>1 x 16</td></tr><tr><th>Class</th><td>char</td></tr></table></div>
+<div class="tooltip" id="TT75"><table class="tooltip"><tr><th>Size</th><td>1 x 5</td></tr><tr><th>Class</th><td>cell</td></tr></table></div>
+<div class="tooltip" id="TT76"><table class="tooltip"><tr><th>Size</th><td>4 x 1</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT77"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>char</td></tr></table></div>
+<div class="tooltip" id="TT78"><table class="tooltip"><tr><th>Size</th><td>49145 x 1</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT79"><table class="tooltip"><tr><th>Size</th><td>49145 x 1</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT80"><table class="tooltip"><tr><th>Size</th><td>1 x 49145</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT81"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>function_handle</td></tr></table></div>
+<div class="tooltip" id="TT82"><table class="tooltip"><tr><th>Size</th><td>1 x 30</td></tr><tr><th>Class</th><td>char</td></tr></table></div>
+<div class="tooltip" id="TT83"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>function_handle</td></tr></table></div>
+<div class="tooltip" id="TT84"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>int32</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT85"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>function_handle</td></tr></table></div>
+<div class="tooltip" id="TT86"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>function_handle</td></tr></table></div>
+<div class="tooltip" id="TT87"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>VibratoPlugin</td></tr></table></div>
+<div class="tooltip" id="TT88"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>Vibrato</td></tr></table></div>
+<div class="tooltip" id="TT89"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>Vibrato</td></tr></table></div>
+<div class="tooltip" id="TT90"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>VibratoPlugin</td></tr></table></div>
+<div class="tooltip" id="TT91"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>Vibrato</td></tr></table></div>
+<div class="tooltip" id="TT92"><table class="tooltip"><tr><th>Size</th><td>1 x 25</td></tr><tr><th>Class</th><td>char</td></tr></table></div>
+<div class="tooltip" id="TT93"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>VibratoPlugin</td></tr></table></div>
+<div class="tooltip" id="TT94"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>Vibrato</td></tr></table></div>
+<div class="tooltip" id="TT95"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>Vibrato</td></tr></table></div>
+<div class="tooltip" id="TT96"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>VibratoPlugin</td></tr></table></div>
+<div class="tooltip" id="TT97"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>Vibrato</td></tr></table></div>
+<div class="tooltip" id="TT98"><table class="tooltip"><tr><th>Size</th><td>1 x 24</td></tr><tr><th>Class</th><td>char</td></tr></table></div>
+<div class="tooltip" id="TT99"><table class="tooltip"><tr><th>Size</th><td>1 x 8</td></tr><tr><th>Class</th><td>char</td></tr></table></div>
+<div class="tooltip" id="TT100"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>VibratoPlugin</td></tr></table></div>
+<div class="tooltip" id="TT101"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>Vibrato</td></tr></table></div>
+<div class="tooltip" id="TT102"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>Vibrato</td></tr></table></div>
+<div class="tooltip" id="TT103"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>VibratoPlugin</td></tr></table></div>
+<div class="tooltip" id="TT104"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>Vibrato</td></tr></table></div>
+<div class="tooltip" id="TT105"><table class="tooltip"><tr><th>Size</th><td>1 x 28</td></tr><tr><th>Class</th><td>char</td></tr></table></div>
+<div class="tooltip" id="TT106"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>VibratoPlugin</td></tr></table></div>
+<div class="tooltip" id="TT107"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>Vibrato</td></tr></table></div>
+<div class="tooltip" id="TT108"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>VibratoPlugin</td></tr></table></div>
+<div class="tooltip" id="TT109"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>Vibrato</td></tr></table></div>
+<div class="tooltip" id="TT110"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>Vibrato</td></tr></table></div>
+<div class="tooltip" id="TT111"><table class="tooltip"><tr><th>Size</th><td><b>:</b>? x 1</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT112"><table class="tooltip"><tr><th>Size</th><td>1 x 4</td></tr><tr><th>Class</th><td>cell</td></tr></table></div>
+<div class="tooltip" id="TT113"><table class="tooltip"><tr><th>Size</th><td>4 x 1</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT114"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>VibratoPlugin</td></tr></table></div>
+<div class="tooltip" id="TT115"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>Vibrato</td></tr></table></div>
+<div class="tooltip" id="V1"><table class="tooltip"><tr><th>Value</th><td>Resetting plugin</br></td></tr></table></div>
+<div class="tooltip" id="V2"><table class="tooltip"><tr><th>Value</th><td>    20</br></td></tr></table></div>
+<div class="tooltip" id="V3"><table class="tooltip"><tr><th>Value</th><td>       20000</br></td></tr></table></div>
+<div class="tooltip" id="V4"><table class="tooltip"><tr><th>Value</th><td>       49145</br></td></tr></table></div>
+<div class="tooltip" id="V5"><table class="tooltip"><tr><th>Value</th><td>Setting parameter 'width'</br></td></tr></table></div>
+<div class="tooltip" id="V6"><table class="tooltip"><tr><th>Value</th><td>Setting parameter 'rate'</br></td></tr></table></div>
+<div class="tooltip" id="V7"><table class="tooltip"><tr><th>Value</th><td>Setting parameter 'waveform'</br></td></tr></table></div>
+<div class="tooltip" id="V8"><table class="tooltip"><tr><th>Value</th><td>Setting parameter 'Mix'</br></td></tr></table></div>
+<div class="tooltip" id="V9"><table class="tooltip"><tr><th>Value</th><td>Running plugin</br></td></tr></table></div>
+</div>
+</div>
+<!-- End Tooltips -->
+
+<div class="south">
+<ul class="ui-tabs-nav">
+<li class="ui-tabs-nav-item"><span class="tab-link" id="summary"><span>Summary</span></span></li>
+<li class="ui-tabs-nav-item ui-tabs-selected"><span class="tab-link" id="messages"><span>All Messages (3)</span></span></li>
+<li class="ui-tabs-nav-item"><span class="tab-link" id="watchlist"><span>Variables</span></span></li>
+<li class="ui-tabs-nav-item hidden"><span class="tab-link" id="watchload"><span>Variables</span></span></li>
+</ul>
+
+<!-- Compilation Summary -->
+<div id="summarybody" class="ui-tabs-panel hidden">
+<table cellpadding="1" cellspacing="4">
+<tr><td>MATLAB code generation attempted on:</td><td>09-Mar-2017 22:11:27</td></tr>
+<tr><td>Coding target:</td><td>MEX Function</td></tr>
+<tr><td>Number of errors:</td><td><a href="javascript:selectMessagesTab();">3</a></td></tr>
+<tr><td>Number of warnings:</td><td><a href="javascript:selectMessagesTab();">0</a></td></tr>
+<tr><td>Number of notices:</td><td><a href="javascript:selectMessagesTab();">0</a></td></tr>
+</table>
+<p/><p/><table>
+<tr><td><b>Tell Us What You Think</b></td></tr>
+<tr><td>We value your feedback. Please take a few minutes to answer this short questionnaire regarding the Code Generation Report.</td></tr>
+<tr><td><a href="matlab: emlcprivate('launchReportSurvey');">&gt;&gt;Provide Feedback</a></td></tr>
+</table>
+</div>
+
+<!-- Message Table -->
+<div id="messagesbody" class="ui-tabs-panel">
+<table class="grid" summary="This table lists the messages produced during code generation." cellspacing="0" cellpadding="6">
+<thead>
+<tr>
+<th id="msgorder" scope="col"><div class="d1"><div class="d2"><a href="#">Order</a></div></div></th>
+<th id="msgtype" scope="col"><div class="d1"><div class="d2"><a href="#">Type</a></div></div></th>
+<th id="function" scope="col"><div class="d1"><div class="d2"><a href="#">Function</a></div></div></th>
+<th id="location" scope="col"><div class="d1"><div class="d2"><a href="#">Line</a></div></div></th>
+<th id="text" scope="col"><div class="d1"><div class="d2"><a href="#">Description</a></div></div></th>
+</tr>
+</thead>
+<tbody onmouseover="messagesMouseOver(event);" onmouseout="messagesMouseOut(event);" onclick="messagesClick(event);">
+<tr class="message error" id="M3F257">
+<td class="msgorder" headers="msgorder"><a href="#">1</a></td>
+<td class="failed" headers="msgtype"></td>
+<td class="function" headers="function"><div>set.waveform</div></td>
+<td class="location" headers="location"><div>39</div></td>
+<td class="text" headers="text"><div>Dimension 2 is fixed on the left-hand side but varies on the right ([1 x 4] ~= [1 x :?]).</div></td>
+</tr>
+<tr class="message error" id="M1F1">
+<td class="msgorder" headers="msgorder"><a href="#">2</a></td>
+<td class="failed" headers="msgtype"></td>
+<td class="function" headers="function"><div>testbench_VibratoPlugin</div></td>
+<td class="location" headers="location"><div>70</div></td>
+<td class="text" headers="text"><div>Function call failed.</div></td>
+</tr>
+<tr class="message error" id="M2F1">
+<td class="msgorder" headers="msgorder"><a href="#">3</a></td>
+<td class="failed" headers="msgtype"></td>
+<td class="function" headers="function"><div>testbench_VibratoPlugin</div></td>
+<td class="location" headers="location"><div>71</div></td>
+<td class="text" headers="text"><div>Dimension 2 is fixed on the left-hand side but varies on the right ([1 x 4] ~= [1 x :?]).</div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Watchlist Table -->
+<div id="watchlistbody" class="ui-tabs-panel hidden">
+</div>
+<div id="watchloadbody" class="ui-tabs-panel hidden">
+Loading Variables table ...
+</div>
+
+</div>
+<!-- Begin MATLAB Code Panel -->
+<div class="center">
+<div class="center-title">
+<div class="ui-tabs-nav-item ui-tabs-selected">
+<span class="functiontitle">
+</span>
+<!-- Begin Call Sites -->
+<span id="callsiteselecttable" class="call-sites-tbl">
+<span id="callsiteselectlabel" class="filtered">Calls:</span>
+<select id="callsiteselect" onchange="callSiteChange(event)">
+<option value="callsiteprompt">Select a function call:</option>
+</select>
+</span>
+<!-- End Call Sites -->
+</div>
+</div>
+<div class="ui-tabs-panel">
+<div class="code" onmouseover="mcodeMouseOver(event);" onmouseout="mcodeMouseOut(event);"onclick="mcodeClick(event);">
+</div>
+</div>
+</div>
+<!-- End MATLAB Code Panel -->
+</body>
+</html>

@@ -1,0 +1,74 @@
+<div class="dead">
+<pre class="code">
+<span class="srcline"><span class="lineno"><a href="30,1" id="srcline1"> 1</a></span><span class="line"><span class="keyword">classdef</span> VibratoPlugin &lt; audioPlugin</span></span>
+<span class="srcline"><span class="lineno"><a href="30,2" id="srcline2"> 2</a></span><span class="line">    </span></span>
+<span class="srcline"><span class="lineno"><a href="30,3" id="srcline3"> 3</a></span><span class="line">    <span class="keyword">properties</span></span></span>
+<span class="srcline"><span class="lineno"><a href="30,4" id="srcline4"> 4</a></span><span class="line">        width = 0.0001</span></span>
+<span class="srcline"><span class="lineno"><a href="30,5" id="srcline5"> 5</a></span><span class="line">        rate = 9</span></span>
+<span class="srcline"><span class="lineno"><a href="30,6" id="srcline6"> 6</a></span><span class="line">        waveform = <span class="string">'Sine'</span></span></span>
+<span class="srcline"><span class="lineno"><a href="30,7" id="srcline7"> 7</a></span><span class="line">        Mix = 0.5</span></span>
+<span class="srcline"><span class="lineno"><a href="30,8" id="srcline8"> 8</a></span><span class="line">    <span class="keyword">end</span></span></span>
+<span class="srcline"><span class="lineno"><a href="30,9" id="srcline9"> 9</a></span><span class="line">    </span></span>
+<span class="srcline"><span class="lineno"><a href="30,10" id="srcline10">10</a></span><span class="line">    <span class="keyword">properties</span> (Dependent)</span></span>
+<span class="srcline"><span class="lineno"><a href="30,11" id="srcline11">11</a></span><span class="line">    <span class="keyword">end</span></span></span>
+<span class="srcline"><span class="lineno"><a href="30,12" id="srcline12">12</a></span><span class="line">    </span></span>
+<span class="srcline"><span class="lineno"><a href="30,13" id="srcline13">13</a></span><span class="line">    <span class="keyword">properties</span> (Constant)</span></span>
+<span class="srcline"><span class="lineno"><a href="30,14" id="srcline14">14</a></span><span class="line">        <span class="comment">% audioPluginInterface manages the number of input/output channels</span></span></span>
+<span class="srcline"><span class="lineno"><a href="30,15" id="srcline15">15</a></span><span class="line">        <span class="comment">% and uses audioPluginParameter to generate plugin UI parameters.</span></span></span>
+<span class="srcline"><span class="lineno"><a href="30,16" id="srcline16">16</a></span><span class="line">        PluginInterface = audioPluginInterface(<span class="keyword">...</span></span></span>
+<span class="srcline"><span class="lineno"><a href="30,17" id="srcline17">17</a></span><span class="line">            audioPluginParameter(<span class="string">'width'</span>,<span class="string">'DisplayName'</span>,<span class="string">'Width'</span>,<span class="string">'Label'</span>,<span class="string">''</span>,<span class="string">'Mapping'</span>,{<span class="string">'lin'</span>,0.00001 0.001}),<span class="keyword">...</span></span></span>
+<span class="srcline"><span class="lineno"><a href="30,18" id="srcline18">18</a></span><span class="line">            audioPluginParameter(<span class="string">'rate'</span>,<span class="string">'DisplayName'</span>,<span class="string">'Modulation Rate'</span>,<span class="string">'Label'</span>,<span class="string">'Hz'</span>,<span class="string">'Mapping'</span>,{<span class="string">'lin'</span>,0.1 14}),<span class="keyword">...</span></span></span>
+<span class="srcline"><span class="lineno"><a href="30,19" id="srcline19">19</a></span><span class="line">            audioPluginParameter(<span class="string">'waveform'</span>,<span class="keyword">...</span></span></span>
+<span class="srcline"><span class="lineno"><a href="30,20" id="srcline20">20</a></span><span class="line">            <span class="string">'DisplayName'</span>,<span class="string">'Waveform'</span>,<span class="string">'Mapping'</span>,{<span class="string">'enum'</span>,<span class="string">'Sine    '</span>,<span class="string">'Square  '</span>, <span class="string">'Sawtooth'</span>,<span class="string">'Triangle'</span>}),<span class="keyword">...</span></span></span>
+<span class="srcline"><span class="lineno"><a href="30,21" id="srcline21">21</a></span><span class="line">            audioPluginParameter(<span class="string">'Mix'</span>,<span class="string">'DisplayName'</span>,<span class="string">'Dry/Wet'</span>,<span class="string">'Label'</span>,<span class="string">'%'</span>,<span class="string">'Mapping'</span>,{<span class="string">'lin'</span>,0 1}));</span></span>
+<span class="srcline"><span class="lineno"><a href="30,22" id="srcline22">22</a></span><span class="line">    <span class="keyword">end</span></span></span>
+<span class="srcline"><span class="lineno"><a href="30,23" id="srcline23">23</a></span><span class="line">    </span></span>
+<span class="srcline"><span class="lineno"><a href="30,24" id="srcline24">24</a></span><span class="line">    <span class="keyword">properties</span> (Access = private)</span></span>
+<span class="srcline"><span class="lineno"><a href="30,25" id="srcline25">25</a></span><span class="line">        vibrato</span></span>
+<span class="srcline"><span class="lineno"><a href="30,26" id="srcline26">26</a></span><span class="line">    <span class="keyword">end</span></span></span>
+<span class="srcline"><span class="lineno"><a href="30,27" id="srcline27">27</a></span><span class="line">    </span></span>
+<span class="srcline"><span class="lineno"><a href="30,28" id="srcline28">28</a></span><span class="line">    <span class="keyword">methods</span></span></span>
+<span class="srcline"><span class="lineno"><a href="30,29" id="srcline29">29</a></span><span class="line">        <span class="keyword">function</span> obj = VibratoPlugin()</span></span>
+<span class="srcline"><span class="lineno"><a href="30,30" id="srcline30">30</a></span><span class="line">            obj.vibrato = Vibrato(obj.rate, obj.width, obj.waveform, getSampleRate(obj));</span></span>
+<span class="srcline"><span class="lineno"><a href="30,31" id="srcline31">31</a></span><span class="line">        <span class="keyword">end</span></span></span>
+</pre>
+</div>
+<pre class="code">
+<span class="srcline"><span class="lineno"><a href="30,32" id="srcline32">32</a></span><span class="line">        </span></span>
+<span class="srcline"><span class="lineno"><a href="30,33" id="srcline33">33</a></span><span class="line">        <span class="keyword">function</span> set.rate(<span class="var type1" id="S16T93U119">obj</span>,<span class="var type1" id="S17T3U120">rate</span>)</span></span>
+<span class="srcline"><span class="lineno"><a href="30,34" id="srcline34">34</a></span><span class="line">            <span class="mxinfo " id="T3:U3"><span class="mxinfo " id="T3:U4"><span class="var type1" id="S16T93U124">obj</span>.rate</span> = <span class="var type1" id="S17T3U126">rate</span></span>;</span></span>
+<span class="srcline"><span class="lineno"><a href="30,35" id="srcline35">35</a></span><span class="line">            <span class="comment">% obj.vibrato.rate = obj.rate;</span></span></span>
+<span class="srcline"><span class="lineno"><a href="30,36" id="srcline36">36</a></span><span class="line">            <span class="fcn" id="F244N5:B129">setRate</span>(<span class="mxinfo " id="T94:U7"><span class="var type1" id="S16T93U131">obj</span>.vibrato</span>, <span class="mxinfo " id="T3:U9"><span class="var type1" id="S16T93U134">obj</span>.rate</span>);</span></span>
+<span class="srcline"><span class="lineno"><a href="30,37" id="srcline37">37</a></span><span class="line">        <span class="keyword">end</span></span></span>
+</pre>
+<div class="dead">
+<pre class="code">
+<span class="srcline"><span class="lineno"><a href="30,38" id="srcline38">38</a></span><span class="line">         <span class="keyword">function</span> set.waveform(obj,waveform)</span></span>
+<span class="srcline"><span class="lineno"><a href="30,39" id="srcline39">39</a></span><span class="line">            obj.waveform = waveform;</span></span>
+<span class="srcline"><span class="lineno"><a href="30,40" id="srcline40">40</a></span><span class="line">            <span class="comment">% obj.vibrato.rate = obj.rate;</span></span></span>
+<span class="srcline"><span class="lineno"><a href="30,41" id="srcline41">41</a></span><span class="line">            setWaveform(obj.vibrato,waveform);</span></span>
+<span class="srcline"><span class="lineno"><a href="30,42" id="srcline42">42</a></span><span class="line">        <span class="keyword">end</span></span></span>
+<span class="srcline"><span class="lineno"><a href="30,43" id="srcline43">43</a></span><span class="line">        <span class="keyword">function</span> set.width(obj, width)</span></span>
+<span class="srcline"><span class="lineno"><a href="30,44" id="srcline44">44</a></span><span class="line">            obj.width = width;</span></span>
+<span class="srcline"><span class="lineno"><a href="30,45" id="srcline45">45</a></span><span class="line">            <span class="comment">% obj.vibrato.width = obj.width;</span></span></span>
+<span class="srcline"><span class="lineno"><a href="30,46" id="srcline46">46</a></span><span class="line">            setWidth(obj.vibrato,obj.width);</span></span>
+<span class="srcline"><span class="lineno"><a href="30,47" id="srcline47">47</a></span><span class="line">        <span class="keyword">end</span></span></span>
+<span class="srcline"><span class="lineno"><a href="30,48" id="srcline48">48</a></span><span class="line">        </span></span>
+<span class="srcline"><span class="lineno"><a href="30,49" id="srcline49">49</a></span><span class="line">        <span class="keyword">function</span> reset(obj)</span></span>
+<span class="srcline"><span class="lineno"><a href="30,50" id="srcline50">50</a></span><span class="line">            reset(obj.vibrato, getSampleRate(obj));</span></span>
+<span class="srcline"><span class="lineno"><a href="30,51" id="srcline51">51</a></span><span class="line">        <span class="keyword">end</span></span></span>
+<span class="srcline"><span class="lineno"><a href="30,52" id="srcline52">52</a></span><span class="line">        </span></span>
+<span class="srcline"><span class="lineno"><a href="30,53" id="srcline53">53</a></span><span class="line">        <span class="keyword">function</span> out = process(obj, x)</span></span>
+<span class="srcline"><span class="lineno"><a href="30,54" id="srcline54">54</a></span><span class="line">           <span class="comment">% y = zeros(size(x));</span></span></span>
+<span class="srcline"><span class="lineno"><a href="30,55" id="srcline55">55</a></span><span class="line">            y = process(obj.vibrato, x);</span></span>
+<span class="srcline"><span class="lineno"><a href="30,56" id="srcline56">56</a></span><span class="line">            </span></span>
+<span class="srcline"><span class="lineno"><a href="30,57" id="srcline57">57</a></span><span class="line">            <span class="comment">% Calculate output by adding wet and dry signal in appropriate</span></span></span>
+<span class="srcline"><span class="lineno"><a href="30,58" id="srcline58">58</a></span><span class="line">            <span class="comment">% ratio</span></span></span>
+<span class="srcline"><span class="lineno"><a href="30,59" id="srcline59">59</a></span><span class="line">            mix = obj.Mix;</span></span>
+<span class="srcline"><span class="lineno"><a href="30,60" id="srcline60">60</a></span><span class="line">            out = (1-mix)*x + (mix)*y;</span></span>
+<span class="srcline"><span class="lineno"><a href="30,61" id="srcline61">61</a></span><span class="line">        <span class="keyword">end</span></span></span>
+<span class="srcline"><span class="lineno"><a href="30,62" id="srcline62">62</a></span><span class="line">    <span class="keyword">end</span></span></span>
+<span class="srcline"><span class="lineno"><a href="30,63" id="srcline63">63</a></span><span class="line"><span class="keyword">end</span></span></span>
+<span class="srcline"><span class="lineno"><a href="30,64" id="srcline64">64</a></span><span class="line"> </span></span>
+</pre>
+</div>
